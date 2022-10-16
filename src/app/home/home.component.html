@@ -1,1 +1,8 @@
-<p>home works!</p>
+<h1 class="vendor-container">Vendors</h1>
+
+<div class="vendor-container">
+    <div *ngFor="let vendor of vendors" class="float-left margin-lr">
+            <img src="../assets/home-images/{{vendor.imageUrl}}" width="100px" />
+            <p>{{vendor.name}}</p>
+    </div>
+</div>
