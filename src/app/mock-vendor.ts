@@ -8,12 +8,12 @@ export const VENDORS: Vendor[] = [
 },
 {
     uid: "6RGcuyIneBPDFk4Nq4Ny",  name: "The Chick Choice", 
-    location: "Lajpat Nagar 4, Delhi", imageUrl: "raw-meat-with-spices.jpg",  
+    location: "Lajpat Nagar 4, Delhi", imageUrl: "raw-chicken-meat-legs.jpg",  
     category: "meat", isLiked: false
 },
 {
     uid: "DF4gjmTMxDadlrjs2Y4E",  name: "Cafe Manhattan", 
-    location: "Dwarka Sector 6, Delhi", imageUrl: "table-4397860_640.jpg",  
+    location: "Dwarka Sector 6, Delhi", imageUrl: "food-4801581_640.jpg",  
     category: "restuarant", isLiked: false
 },
 {
@@ -58,12 +58,12 @@ export const VENDORS: Vendor[] = [
 },
 {
     uid: "mPBdn1tKUiSOAo5ba2xm",  name: "Dreamz Wedding Planner", 
-    location: "Rajouri Garden, Delhi", imageUrl: "eggplant-1717224_640.jpg",  
+    location: "Rajouri Garden, Delhi", imageUrl: "table-4397860_640.jpg",  
     category: "events", isLiked: false
 },
 {
     uid: "skwFGgRK9l6XPglypyw7",  name: "NRKS International Supply", 
-    location: "Greater , Noida, Delhi", imageUrl: "grilled-meat-with-vegetables.jpg",  
+    location: "Greater , Noida, Delhi", imageUrl: "inside-g13051eb37_1280.jpg",  
     category: "produce", isLiked: false
 }
 ]

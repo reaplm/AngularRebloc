@@ -1,8 +1,18 @@
-<h1 class="vendor-container">Vendors</h1>
 
-<div class="vendor-container">
-    <div *ngFor="let vendor of vendors" class="float-left margin-lr">
-            <img src="../assets/home-images/{{vendor.imageUrl}}" width="100px" />
-            <p>{{vendor.name}}</p>
+<div class="container-fluid">
+    <div>
+        <h1 class="text-center">Vendors</h1>
     </div>
+    
+    <div class="row" data-masonry='{"percentPosition": true }'>
+            <div *ngFor="let vendor of vendors" class="card m-3" style="width: 18rem;">
+                <img src="../assets/home-images/{{vendor.imageUrl}}"/>
+                <div class="card-body">
+                    <h5 class="card-title">{{vendor.name}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+
+    </div>  
 </div>
+
