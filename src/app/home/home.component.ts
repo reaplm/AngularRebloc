@@ -10,6 +10,7 @@ import { Vendor } from '../vendor';
 })
 export class HomeComponent implements OnInit {
   vendors: Vendor[] = [];
+  selectedVendor?: Vendor;
 
   constructor(private vendorService: VendorService) { }
 
@@ -21,5 +22,8 @@ export class HomeComponent implements OnInit {
    */
   getVendors(): void{
     this.vendors = this.vendorService.getVendors();
+  }
+  onSelected(vendor: Vendor): void{
+    this.selectedVendor = vendor;
   }
 }

@@ -5,7 +5,8 @@
     </div>
     
     <div class="row" data-masonry='{"percentPosition": true }'>
-            <div *ngFor="let vendor of vendors" class="card m-3" style="width: 18rem;">
+            <div *ngFor="let vendor of vendors" class="card m-3" style="width: 18rem;"
+            (click)="onSelected(vendor)">
                 <img src="../assets/home-images/{{vendor.imageUrl}}"/>
                 <div class="card-body">
                     <h5 class="card-title">{{vendor.name}}</h5>
@@ -15,4 +16,4 @@
 
     </div>  
 </div>
-
+<app-vendor-detail [vendor]="selectedVendor"></app-vendor-detail>
