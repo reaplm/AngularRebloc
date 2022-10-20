@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../vendor.service';
 import { Vendor } from '../vendor';
-
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +11,7 @@ import { Vendor } from '../vendor';
 export class HomeComponent implements OnInit {
   vendors: Vendor[] = [];
   selectedVendor?: Vendor;
+  moreIcon = faAngleDoubleRight;
 
   constructor(private vendorService: VendorService) { }
 
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
   getVendors(): void{
     this.vendors = this.vendorService.getVendors();
   }
-  onSelected(vendor: Vendor): void{
+  /*onSelected(vendor: Vendor): void{
     this.selectedVendor = vendor;
-  }
+  }*/
+
 }

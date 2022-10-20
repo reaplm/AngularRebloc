@@ -1,4 +1,5 @@
 export interface Vendor{
+    id: number;
     uid: string;
     name: string;
     location: string;

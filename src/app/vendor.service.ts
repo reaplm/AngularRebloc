@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Vendor } from './vendor';
 import { VENDORS } from './mock-vendor';
 
@@ -12,4 +13,10 @@ export class VendorService {
   getVendors(): Vendor[]{
     return VENDORS;
   }
+  getVendor(id: number): Observable<Vendor>{
+    const vendor = VENDORS.find(v => v.id === id)!;
+
+    return of(vendor);
+  }
+
 }

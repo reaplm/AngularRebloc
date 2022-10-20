@@ -5,15 +5,18 @@
     </div>
     
     <div class="row" data-masonry='{"percentPosition": true }'>
-            <div *ngFor="let vendor of vendors" class="card m-3" style="width: 18rem;"
-            (click)="onSelected(vendor)">
+            <div *ngFor="let vendor of vendors" class="card m-3 p-0" style="width: 18rem;">
                 <img src="../assets/home-images/{{vendor.imageUrl}}"/>
                 <div class="card-body">
                     <h5 class="card-title">{{vendor.name}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                   <!-- <a routerLink="/vendors/detail/{{vendor.id}}" class="btn">
+                    
+                    </a>-->
                 </div>
             </div>
-
     </div>  
 </div>
-<app-vendor-detail [vendor]="selectedVendor"></app-vendor-detail>
+<!--
+    <app-vendor-detail [vendor]="selectedVendor"></app-vendor-detail>
+-->
