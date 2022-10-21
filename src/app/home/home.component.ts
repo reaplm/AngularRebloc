@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { VendorService } from '../vendor.service';
 import { Vendor } from '../vendor';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
@@ -11,9 +12,11 @@ import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 export class HomeComponent implements OnInit {
   vendors: Vendor[] = [];
   selectedVendor?: Vendor;
+  url: string = "/vendors/detail/";
   moreIcon = faAngleDoubleRight;
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getVendors();
@@ -24,8 +27,9 @@ export class HomeComponent implements OnInit {
   getVendors(): void{
     this.vendors = this.vendorService.getVendors();
   }
-  /*onSelected(vendor: Vendor): void{
-    this.selectedVendor = vendor;
-  }*/
+  onCardSelected(vendor: Vendor): void{
+    //navigate to details
+    this.router.navigateByUrl(this.url + vendor.id);
+  }
 
 }
