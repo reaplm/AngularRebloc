@@ -5,5 +5,6 @@ export interface Vendor{
     location: string;
     category: string;
     imageUrl: string;
-    isLiked: boolean;
+    overview: string;
+
 }
