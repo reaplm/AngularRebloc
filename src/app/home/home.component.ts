@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { VendorService } from '../vendor.service';
 import { Vendor } from '../vendor';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   selectedVendor?: Vendor;
   url: string = "/vendors/detail/";
   moreIcon = faAngleDoubleRight;
+  
 
   constructor(private vendorService: VendorService,
       private router: Router) { }
@@ -22,10 +24,20 @@ export class HomeComponent implements OnInit {
     this.getVendors();
   }
   /**
-   * Fetch vendor list
+   * Fetch vendor list from service
    */
   getVendors(): void{
-    this.vendors = this.vendorService.getVendors();
+
+    this.vendorService.getVendors()
+    .subscribe((response) => {
+      console.log(response);
+        if(response.body != null){
+          for( const data of response.body){
+            this.vendors.push(data);
+          }
+        } 
+      }
+    );
   }
   onCardSelected(vendor: Vendor): void{
     const detailUrl: string = this.url + vendor.id;
