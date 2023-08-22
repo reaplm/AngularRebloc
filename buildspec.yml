@@ -1,0 +1,24 @@
+version: 0.2
+env:
+    variables:
+        APP_NAME: "angular-rebloc"
+phases:
+    install:
+        runtime-versions: 
+            nodejs: latest
+        commands:
+            - echo install process started
+            - npm install && npm install -g @angular/cli
+            - npm install ngx-masonry masonry-layout --save 
+    build:
+        commands:
+            - echo build process started
+            - ng build --configuration=development
+    post_build:
+        commands:
+            - echo build process finished upload to s3
+            - cd dist/$APP_NAME
+            - ls -la
+            - aws s3 sync . s3://angular-rebloc-bucket --delete
+        
+    
