@@ -4,6 +4,12 @@
         <h1 class="text-center">Vendors</h1>
     </div>
 
+    <div class="d-flex justify-content-center my-auto" *ngIf="showSpinner">
+        <div class="spinner-border" role="status" style="width: 6rem; height: 6rem;">
+          <span class="sr-only"></span>
+        </div>
+    </div>
+
     <ngx-masonry [options]="{fitWidth: true}" class="m-auto">
 
         <div ngxMasonryItem class="masonry-item" *ngFor="let vendor of vendors" class="card m-3 p-0 sm-card"

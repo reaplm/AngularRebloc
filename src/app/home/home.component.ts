@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   url: string = "/vendors/detail/";
   moreIcon = faAngleDoubleRight;
   selectedItem: HTMLElement | null;
+  showSpinner: boolean = true;
   
   @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
 
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
     .subscribe((response) => {
       console.log(response);
         if(response.body != null){
+          this.showSpinner = false;
           for( const data of response.body){
             this.vendors.push(data);
           }
