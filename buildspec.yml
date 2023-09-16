@@ -3,22 +3,33 @@ env:
     variables:
         APP_NAME: "angular-rebloc"
 phases:
-    install:
-        runtime-versions: 
-            nodejs: latest
+    pre_build:
         commands:
-            - echo install process started
-            - npm install && npm install -g @angular/cli
-            - npm install ngx-masonry masonry-layout --save 
+            - echo pre_build started...
+            - IMAGE_TAG=${CODEBUILD_BUILD_NUMBER}
+            - echo $IMAGE_TAG
+            - echo $AWS_DEFAULT_REGION
+            - echo $AWS_ACCOUNT_ID
+            - echo $REPOSITORY_URI
+            - echo logging into amzon ecr...
+            - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+            - echo login successful
     build:
         commands:
-            - echo build process started
-            - ng build --configuration=development
+            - echo Build started on `date`
+            - echo Building the Docker image...
+            - docker build --build-arg HOST_ENV=${HOST_ENVIRONMENT} -t $REPOSITORY_URI:latest .
+            - echo Build Docker image successful...
     post_build:
         commands:
-            - echo build process finished upload to s3
-            - cd dist/$APP_NAME
-            - ls -la
-            - aws s3 sync . s3://angular-rebloc-bucket --delete
+            - echo Build completed on `date`
+            - echo Pushing the Docker images...
+            - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+            - docker push $REPOSITORY_URI:$IMAGE_TAG
+            - echo Finished pushing the Docker images...
+            - printf '[{"name":"angular-rebloc","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+
+artifacts:
+    files: imagedefinitions.json
         
     
