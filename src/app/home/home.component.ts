@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     );
   }
   onCardSelected(vendor: Vendor): void{
-    var selectedElements = document.querySelectorAll('.card-selected');
+ /*   var selectedElements = document.querySelectorAll('.card-selected');
 
     //Unselected any selected
     if(selectedElements.length){
@@ -63,9 +63,9 @@ export class HomeComponent implements OnInit {
     this.selectedItem.scrollIntoView({behavior: 'smooth'});
 
     this.masonry.reloadItems();
-    this.masonry.layout();
+    this.masonry.layout();*/
     //const detailUrl: string = this.url + vendor.id;
-    //this.router.navigateByUrl(detailUrl);
+    this.router.navigateByUrl(this.vendorService.getDetailUrl(vendor.id));
   }
 
 }
