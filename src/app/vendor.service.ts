@@ -10,11 +10,14 @@ import { environment } from 'src/environments/environment';
 })
 export class VendorService {
   private baseUrl: string = environment.baseUrl;
+  private apiUrl: string = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
   getVendors(): Observable<HttpResponse<Vendor[]>>{
     //return VENDORS;
-    return this.http.get<Vendor[]>(this.baseUrl, {observe: 'response'})
+    return this.http.get<Vendor[]>(this.baseUrl + this.apiUrl, {observe: 
+'response'})
       .pipe(catchError(this.handleError));
      
   }
