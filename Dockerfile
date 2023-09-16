@@ -1,5 +1,6 @@
 #base image with alias
 FROM node:latest as build-step
+ARG HOST_ENV=development
 WORKDIR /app
 
 
@@ -10,7 +11,8 @@ RUN npm install -g @angular/cli
 COPY ./package.json .
 RUN npm install
 COPY . .
-RUN ng build
+ENV HOST_ENV=$HOST_ENV
+RUN ng build --configuration=${HOST_ENV}
 
 #copying dist files onto nginx
 #copy contents from other container with alias build-step
