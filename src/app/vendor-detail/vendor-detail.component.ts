@@ -13,6 +13,8 @@ import { Vendor } from '../vendor';
 })
 export class VendorDetailComponent implements OnInit {
   @Input() vendor?: Vendor;
+  imageUrl: string;
+  padId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +28,12 @@ export class VendorDetailComponent implements OnInit {
   getVendor(): void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.vendorService.getVendor(id)
-      .subscribe(vendor => this.vendor = vendor);
+      .subscribe(response => {
+          if(response.body != null){
+            this.vendor = response.body;
+            this.imageUrl = this.vendor.imageUrl;
+            this.padId = this.vendor.id.toString().padStart(2,'0')
+          }
+      });
   }
 }
