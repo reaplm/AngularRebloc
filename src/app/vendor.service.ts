@@ -21,11 +21,16 @@ export class VendorService {
       .pipe(catchError(this.handleError));
      
   }
-  getVendor(id: number): Observable<Vendor>{
-    const vendor = VENDORS.find(v => v.id === id)!;
+  getVendor(id: number): Observable<HttpResponse<Vendor>>{
+    //const vendor = VENDORS.find(v => v.id === id)!;
 
-    return of(vendor);
+    return this.http.get<Vendor>(this.baseUrl + this.apiUrl + id, {observe: 'response'})
+      .pipe(catchError(this.handleError));turn of(vendor);
   }
+  getDetailUrl(id: number): string{
+    return environment.apiUrl + id; 
+  }
+
   private handleError(error: HttpErrorResponse){
     let errorMsg = "Unknown Error!";
     if( error.error instanceof ErrorEvent){
