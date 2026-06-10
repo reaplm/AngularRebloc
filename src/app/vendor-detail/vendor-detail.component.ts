@@ -7,9 +7,10 @@ import { Vendor } from '../vendor';
 
 
 @Component({
-  selector: 'app-vendor-detail',
-  templateUrl: './vendor-detail.component.html',
-  styleUrls: ['./vendor-detail.component.css']
+    selector: 'app-vendor-detail',
+    templateUrl: './vendor-detail.component.html',
+    styleUrls: ['./vendor-detail.component.css'],
+    standalone: false
 })
 export class VendorDetailComponent implements OnInit {
   @Input() vendor?: Vendor;

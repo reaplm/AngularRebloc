@@ -7,9 +7,10 @@ import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import { NgxMasonryComponent } from 'ngx-masonry';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   vendors: Vendor[] = [];
