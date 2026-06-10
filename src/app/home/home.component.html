@@ -1,34 +1,35 @@
 
 <div class="container-fluid">
-    <div>
-        <h1 class="text-center">Vendors</h1>
+  <div>
+    <h1 class="text-center">Vendors</h1>
+  </div>
+
+  @if (showSpinner) {
+    <div class="d-flex justify-content-center spinner" >
+      <div class="spinner-border" role="status" style="width: 6rem; height: 6rem;">
+        <span class="sr-only"></span>
+      </div>
     </div>
+  }
 
-    <div class="d-flex justify-content-center spinner"  *ngIf="showSpinner">
-        <div class="spinner-border" role="status" style="width: 6rem; height: 6rem;">
-          <span class="sr-only"></span>
-        </div>
-    </div>
+  <ngx-masonry [options]="{fitWidth: true}" class="m-auto">
 
-    <ngx-masonry [options]="{fitWidth: true}" class="m-auto">
-
-        <div ngxMasonryItem class="masonry-item" *ngFor="let vendor of vendors" class="card m-3 p-0 sm-card"
-            (click)="onCardSelected(vendor)" id="{{vendor.id}}">
-            <img src="../assets/home-images/{{vendor.imageUrl}}"/>
-            <div class="card-body">
-                <h5 class="card-title">{{vendor.name}}</h5>
-                <p class="card-text d-none">{{vendor.overview}}</p>
+    @for (vendor of vendors; track vendor) {
+      <div ngxMasonryItem class="masonry-item" class="card m-3 p-0 sm-card"
+        (click)="onCardSelected(vendor)" id="{{vendor.id}}">
+        <img src="../assets/home-images/{{vendor.imageUrl}}"/>
+        <div class="card-body">
+          <h5 class="card-title">{{vendor.name}}</h5>
+          <p class="card-text d-none">{{vendor.overview}}</p>
           <!--  <a routerLink="/vendors/detail/{{vendor.id}}" class="btn"sss>
-                
-                </a>
-            -->
-            </div>              
-        
-
-        </div>
-    </ngx-masonry>
+        </a>
+        -->
+      </div>
+    </div>
+  }
+</ngx-masonry>
 </div>
 
 <!--
-    <app-vendor-detail [vendor]="selectedVendor"></app-vendor-detail>
+<app-vendor-detail [vendor]="selectedVendor"></app-vendor-detail>
 -->

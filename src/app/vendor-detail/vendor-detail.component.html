@@ -1,18 +1,19 @@
 
 
-<div *ngIf="vendor" class="container p-0 mt-5 w-100" 
-[style.background-image]="'url(../assets/home-images/'+this.imageUrl+')'">
-    <div  class="row m-0">     
-        <div class="col-md-4">
-            
-        </div>
-        <div class="col-md-8 ovelaytext">
-            <h1 class="display-2">{{this.padId}}</h1>
-            <h1 class="display-2">{{vendor.name}}</h1>
-            <p class="columns-3 mt-3">
-                {{vendor.overview}}
-            </p>
-            <p class="card-text"><small class="text-muted">Other information</small></p>
-        </div>
+@if (vendor) {
+  <div class="container p-0 mt-5 w-100"
+    [style.background-image]="'url(../assets/home-images/'+this.imageUrl+')'">
+    <div  class="row m-0">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8 ovelaytext">
+        <h1 class="display-2">{{this.padId}}</h1>
+        <h1 class="display-2">{{vendor.name}}</h1>
+        <p class="columns-3 mt-3">
+          {{vendor.overview}}
+        </p>
+        <p class="card-text"><small class="text-muted">Other information</small></p>
+      </div>
     </div>
-</div>
+  </div>
+}
