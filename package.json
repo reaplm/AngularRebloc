@@ -20,6 +20,8 @@
     "@angular/router": "^22.0.0",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
+    "masonry-layout": "^4.2.2",
+    "ngx-masonry": "^14.0.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
