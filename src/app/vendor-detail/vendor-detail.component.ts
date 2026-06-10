@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -10,6 +10,7 @@ import { Vendor } from '../vendor';
     selector: 'app-vendor-detail',
     templateUrl: './vendor-detail.component.html',
     styleUrls: ['./vendor-detail.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class VendorDetailComponent implements OnInit {
