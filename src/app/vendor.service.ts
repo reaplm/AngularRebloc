@@ -3,7 +3,7 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Vendor } from './vendor';
 import { VENDORS } from './mock-vendor';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class VendorService {
 
   getVendors(): Observable<HttpResponse<Vendor[]>>{
     //return VENDORS;
-    return this.http.get<Vendor[]>(this.baseUrl + this.apiUrl, {observe: 
+    return this.http.get<Vendor[]>(this.apiUrl, {observe: 
 'response'})
       .pipe(catchError(this.handleError));
      
@@ -25,7 +25,8 @@ export class VendorService {
     //const vendor = VENDORS.find(v => v.id === id)!;
 
     return this.http.get<Vendor>(this.baseUrl + this.apiUrl + id, {observe: 'response'})
-      .pipe(catchError(this.handleError));turn of(vendor);
+      .pipe(catchError(this.handleError));
+      //turn of(vendor);
   }
   getDetailUrl(id: number): string{
     return environment.apiUrl + id; 
